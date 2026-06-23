@@ -3,7 +3,7 @@ services:
     name: lightrag-server
     runtime: python
     buildCommand: pip install "lightrag-hku[api]"
-    startCommand: lightrag-server --host 0.0.0.0 --port $PORT
+    startCommand: python serve.py
     plan: free
     envVars:
       - key: LLM_PROVIDER
@@ -15,7 +15,7 @@ services:
       - key: EMBEDDING_MODEL
         value: text-embedding-3-small
       - key: OPENAI_API_KEY
-        sync: false   # set in Render dashboard
+        sync: false
       - key: WORKING_DIR
         value: /tmp/lightrag_data
       - key: MAX_TOKENS
